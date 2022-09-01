@@ -1,0 +1,49 @@
+.hero{
+  padding: 5rem 2.5rem;
+  background: #222224;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  .open-source{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #fff;
+    img{
+      width: 80px;
+      height: auto;
+      svg{
+        fill: #fff;
+      }
+    }
+  }
+  .headline{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    justify-content: center;
+    img{
+      height: 100px;
+      width: auto;
+      margin-right: 1rem;
+    }
+    h1{
+      margin:0;
+      font-size: 64px;
+      font-weight: 900;
+    }
+  }
+
+  p{
+    margin: 0;
+    font-size: 1.5rem;
+  }
+}
+
+
+
+

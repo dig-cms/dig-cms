@@ -17,7 +17,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "public",
+    "public": "dist/digcms",
     "ignore": [
       "firebase.json",
       "**/.*",
