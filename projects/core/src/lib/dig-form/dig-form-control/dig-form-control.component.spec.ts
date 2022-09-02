@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DigFormControlComponent } from './dig-form-control.component';
+import {firstValueFrom} from 'rxjs';
 
 describe('DigFormControlComponent', () => {
   let component: DigFormControlComponent;
@@ -17,17 +18,36 @@ describe('DigFormControlComponent', () => {
     fixture.detectChanges();
   }));
 
-  it('should register a form control', async () => {
-    // component.control = {
-    //   input: 'text',
-    //   digProps: {
-    //     control: 'input',
-    //     placeholder: 'test input',
-    //   },
-    //   value: 'tester'
-    // }
-    // await fixture.isStable();
-    // expect(component.input).toEqual('text');
+  it('should create a component', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should register a form control', async () => {
+    component.control = {
+      input: 'text',
+      digProps: {
+        control: 'input',
+        placeholder: 'test input',
+      },
+      value: 'tester'
+    }
+    component.ngOnInit();
+    await fixture.whenStable();
+    expect(component.input).toEqual('text');
+    expect(component).toBeTruthy();
+  });
+
+  it('should output a form control', async () => {
+    component.control = {
+      input: 'text',
+      digProps: {
+        control: 'input',
+        placeholder: 'test input',
+      },
+      value: 'tester'
+    }
+    spyOn(component.formRegistered, 'emit');
+    component.ngOnInit();
+    expect(component.formRegistered.emit).toHaveBeenCalled();
   });
 });
