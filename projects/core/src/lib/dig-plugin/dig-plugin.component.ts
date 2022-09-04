@@ -18,7 +18,7 @@ import {DigPluginView} from './dig-plugin';
   templateUrl: './dig-plugin.component.html',
   styleUrls: ['./dig-plugin.component.scss']
 })
-export class DigPluginComponent implements OnInit, OnChanges, AfterViewInit {
+export class DigPluginComponent implements OnInit, OnChanges {
   @Input() uid!: string;
 
   @Input() view: DigPluginView = DigPluginView.template;
