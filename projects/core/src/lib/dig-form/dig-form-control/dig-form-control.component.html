@@ -1,9 +1,0 @@
-<div class="dig-form-field" *ngIf="props">
-  <div class="dig-form-label">{{input}}</div>
-  <div class="dig-form-control" [ngSwitch]="props.control">
-    <div class="dig-form-control-inner" *ngSwitchCase="'input'">
-      {{props.input}}
-      <input [type]="props.type" [placeholder]="props.placeholder" [formControl]="formControl">
-    </div>
-  </div>
-</div>

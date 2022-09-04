@@ -1,0 +1,3686 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "DigDataSource",
+            "id": "interface-DigDataSource-2fe8ec07c6964a5426ba6f3eec15d412ec134791e9704be89b8a5e7eb6be9069eb43ee4034a21200920363ba2ac141bebacaacd90f58ab1bdecf3d1e14d7f375",
+            "file": "projects/core/src/lib/dig-data/dig-data.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {BehaviorSubject, Observable} from 'rxjs';\n\nexport type DigDataContainer = {[key: string]: BehaviorSubject<any>};\n\nexport interface DigDataSource {\n  /**\n   * Fetches an Observable that watches the specified registry node\n   *\n   * @example\n   * ```typescript\n   * const aboutRef: Observable<AboutPage> = dataSource.getData('about-page');\n   * dataSource.subscribe(aboutData => ...do something with the about page data)\n   * ```\n   *\n   * todo pass an optional <type> reference\n   */\n  getData(key: string): Observable<any | undefined>\n\n  /**\n   * Load the persisted data from the data source\n   *\n   * @example\n   * ```typescript\n   * dataSource.load();\n   * ```\n   */\n  load(): void\n\n  /**\n   * Sets a registry node\n   *\n   * @example\n   * ```typescript\n   * dataSource.setData('about-page', {\n   *   headline: 'About Us',\n   *   content: 'Our team is...'\n   * });\n   * ```\n   */\n  setData(key: string, data: any): void;\n\n  /**\n   * Fetches the entire state object\n   *\n   * @example\n   * ```typescript\n   * const state: Observable<AppState> = dataSource.state()\n   * ```\n   *\n   * You can optionally pass this a filter function\n   *\n   * > Note that this can also be done with the RXJS `pipe()` but our filter function is\n   * > called prior to building the data object, so it is slightly more efficient\n   *\n   * @example\n   * ```typescript\n   * const teamMembers: Observable<TeamMember> = dataSource.state((node) => node.pageType === 'team-member')\n   * ```\n   *\n   */\n  state(filterFn?: (i: any) => boolean): Observable<any>\n}\n",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 167,
+            "methods": [
+                {
+                    "name": "getData",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any | undefined>",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFetches an Observable that watches the specified registry node\n\n```html\n```typescript\nconst aboutRef: Observable<AboutPage> = dataSource.getData('about-page');\ndataSource.subscribe(aboutData => ...do something with the about page data)\n```\n```\ntodo pass an optional <type> reference\n",
+                    "description": "<p>Fetches an Observable that watches the specified registry node</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\nconst aboutRef: Observable&lt;AboutPage&gt; = dataSource.getData(&#39;about-page&#39;);\ndataSource.subscribe(aboutData =&gt; ...do something with the about page data)</code></pre></div><div><pre class=\"line-numbers\"><code class=\"language-none\">todo pass an optional &lt;type&gt; reference</code></pre></div>",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "tagName": {
+                                "pos": 240,
+                                "end": 247,
+                                "flags": 4194304,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">const aboutRef: Observable&lt;AboutPage&gt; = dataSource.getData(&#39;about-page&#39;);\ndataSource.subscribe(aboutData =&gt; ...do something with the about page data)\n</code></pre>\n<p>todo pass an optional <type> reference</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "load",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nLoad the persisted data from the data source\n\n```html\n```typescript\ndataSource.load();\n```\n```",
+                    "description": "<p>Load the persisted data from the data source</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\ndataSource.load();</code></pre></div><p>```</p>\n",
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 611,
+                                "end": 618,
+                                "flags": 4194304,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">dataSource.load();\n</code></pre>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "setData",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "data",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSets a registry node\n\n```html\n```typescript\ndataSource.setData('about-page', {\n  headline: 'About Us',\n  content: 'Our team is...'\n});\n```\n```",
+                    "description": "<p>Sets a registry node</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\ndataSource.setData(&#39;about-page&#39;, {\n  headline: &#39;About Us&#39;,\n  content: &#39;Our team is...&#39;\n});</code></pre></div><p>```</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "data",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "tagName": {
+                                "pos": 736,
+                                "end": 743,
+                                "flags": 4194304,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">dataSource.setData(&#39;about-page&#39;, {\n  headline: &#39;About Us&#39;,\n  content: &#39;Our team is...&#39;\n});\n</code></pre>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "state",
+                    "args": [
+                        {
+                            "name": "filterFn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "function": [
+                                {
+                                    "name": "i",
+                                    "type": "any",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 61,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFetches the entire state object\n\n```html\n```typescript\nconst state: Observable<AppState> = dataSource.state()\n```\n```\nYou can optionally pass this a filter function\n\n> Note that this can also be done with the RXJS `pipe()` but our filter function is\n> called prior to building the data object, so it is slightly more efficient\n\n```html\n```typescript\nconst teamMembers: Observable<TeamMember> = dataSource.state((node) => node.pageType === 'team-member')\n```\n```\n",
+                    "description": "<p>Fetches the entire state object</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\nconst state: Observable&lt;AppState&gt; = dataSource.state()</code></pre></div><div><pre class=\"line-numbers\"><code class=\"language-none\">You can optionally pass this a filter function\n\n&gt; Note that this can also be done with the RXJS `pipe()` but our filter function is\n&gt; called prior to building the data object, so it is slightly more efficient\n\n```html\n```typescript\nconst teamMembers: Observable&lt;TeamMember&gt; = dataSource.state((node) =&gt; node.pageType === &#39;team-member&#39;)</code></pre></div><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
+                    "jsdoctags": [
+                        {
+                            "name": "filterFn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "function": [
+                                {
+                                    "name": "i",
+                                    "type": "any",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "tagName": {
+                                "pos": 985,
+                                "end": 992,
+                                "flags": 4194304,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">const state: Observable&lt;AppState&gt; = dataSource.state()\n</code></pre>\n<p>You can optionally pass this a filter function</p>\n<blockquote>\n<p>Note that this can also be done with the RXJS <code>pipe()</code> but our filter function is\ncalled prior to building the data object, so it is slightly more efficient</p>\n</blockquote>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1325,
+                                "end": 1332,
+                                "flags": 4194304,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">const teamMembers: Observable&lt;TeamMember&gt; = dataSource.state((node) =&gt; node.pageType === &#39;team-member&#39;)\n</code></pre>\n"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "DigForm",
+            "id": "interface-DigForm-f35a7c6d0ecfac94eb5f8f19d2daf196d7a6979befa40bbbc08f6dad031fb7e22f03353fcb8169c44392d458097774bd076613284189320428b0f0f49caa1fb2",
+            "file": "projects/core/src/lib/dig-form/dig-form.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {ViewContainerRef} from '@angular/core';\n\nexport enum DigFormControlTypes {\n  checkbox = 'checkbox',\n  input = 'input',\n  textarea = 'textarea',\n  radioGroup = 'radioGroup',\n  radio = 'radio',\n  select = 'select',\n}\n\nexport interface DigFormControl {\n  render: () => any;\n}\n\nexport interface DigForm {\n  controls: DigFormControl[];\n}\n\ntype FormFactory = (config: any, viewContainer: ViewContainerRef) => GenericComponent;\n\n// todo figure out generic angular component type\ninterface GenericComponent {}\n\ntype DigFormProviderFactory = FormFactory | GenericComponent;\n/**\n * DigFormProviders build components to render the forms\n */\nexport interface DigFormProvider {\n  /**\n   * Module that exports all of the form components\n   */\n  module: any;\n\n  /**\n   * The component the wraps a form group\n   */\n  group: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row label\n   */\n  label: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row\n   */\n  row: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row error\n   */\n  error: DigFormProviderFactory;\n\n  /**\n   * The component that renders a text input or textarea (if rows or autosize are set)\n   */\n  text: DigFormProviderFactory;\n\n  /**\n   * the component that renders a select control\n   */\n  select: DigFormProviderFactory;\n}\n\n",
+            "properties": [
+                {
+                    "name": "controls",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DigFormControl[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
+            "name": "DigFormControl",
+            "id": "interface-DigFormControl-f35a7c6d0ecfac94eb5f8f19d2daf196d7a6979befa40bbbc08f6dad031fb7e22f03353fcb8169c44392d458097774bd076613284189320428b0f0f49caa1fb2",
+            "file": "projects/core/src/lib/dig-form/dig-form.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {ViewContainerRef} from '@angular/core';\n\nexport enum DigFormControlTypes {\n  checkbox = 'checkbox',\n  input = 'input',\n  textarea = 'textarea',\n  radioGroup = 'radioGroup',\n  radio = 'radio',\n  select = 'select',\n}\n\nexport interface DigFormControl {\n  render: () => any;\n}\n\nexport interface DigForm {\n  controls: DigFormControl[];\n}\n\ntype FormFactory = (config: any, viewContainer: ViewContainerRef) => GenericComponent;\n\n// todo figure out generic angular component type\ninterface GenericComponent {}\n\ntype DigFormProviderFactory = FormFactory | GenericComponent;\n/**\n * DigFormProviders build components to render the forms\n */\nexport interface DigFormProvider {\n  /**\n   * Module that exports all of the form components\n   */\n  module: any;\n\n  /**\n   * The component the wraps a form group\n   */\n  group: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row label\n   */\n  label: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row\n   */\n  row: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row error\n   */\n  error: DigFormProviderFactory;\n\n  /**\n   * The component that renders a text input or textarea (if rows or autosize are set)\n   */\n  text: DigFormProviderFactory;\n\n  /**\n   * the component that renders a select control\n   */\n  select: DigFormProviderFactory;\n}\n\n",
+            "properties": [
+                {
+                    "name": "render",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
+            "name": "DigFormProvider",
+            "id": "interface-DigFormProvider-f35a7c6d0ecfac94eb5f8f19d2daf196d7a6979befa40bbbc08f6dad031fb7e22f03353fcb8169c44392d458097774bd076613284189320428b0f0f49caa1fb2",
+            "file": "projects/core/src/lib/dig-form/dig-form.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {ViewContainerRef} from '@angular/core';\n\nexport enum DigFormControlTypes {\n  checkbox = 'checkbox',\n  input = 'input',\n  textarea = 'textarea',\n  radioGroup = 'radioGroup',\n  radio = 'radio',\n  select = 'select',\n}\n\nexport interface DigFormControl {\n  render: () => any;\n}\n\nexport interface DigForm {\n  controls: DigFormControl[];\n}\n\ntype FormFactory = (config: any, viewContainer: ViewContainerRef) => GenericComponent;\n\n// todo figure out generic angular component type\ninterface GenericComponent {}\n\ntype DigFormProviderFactory = FormFactory | GenericComponent;\n/**\n * DigFormProviders build components to render the forms\n */\nexport interface DigFormProvider {\n  /**\n   * Module that exports all of the form components\n   */\n  module: any;\n\n  /**\n   * The component the wraps a form group\n   */\n  group: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row label\n   */\n  label: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row\n   */\n  row: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row error\n   */\n  error: DigFormProviderFactory;\n\n  /**\n   * The component that renders a text input or textarea (if rows or autosize are set)\n   */\n  text: DigFormProviderFactory;\n\n  /**\n   * the component that renders a select control\n   */\n  select: DigFormProviderFactory;\n}\n\n",
+            "properties": [
+                {
+                    "name": "error",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DigFormProviderFactory",
+                    "optional": false,
+                    "description": "<p>The component the wraps a form row error</p>\n",
+                    "line": 53,
+                    "rawdescription": "\n\nThe component the wraps a form row error\n"
+                },
+                {
+                    "name": "group",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DigFormProviderFactory",
+                    "optional": false,
+                    "description": "<p>The component the wraps a form group</p>\n",
+                    "line": 38,
+                    "rawdescription": "\n\nThe component the wraps a form group\n"
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DigFormProviderFactory",
+                    "optional": false,
+                    "description": "<p>The component the wraps a form row label</p>\n",
+                    "line": 43,
+                    "rawdescription": "\n\nThe component the wraps a form row label\n"
+                },
+                {
+                    "name": "module",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "<p>Module that exports all of the form components</p>\n",
+                    "line": 33,
+                    "rawdescription": "\n\nModule that exports all of the form components\n"
+                },
+                {
+                    "name": "row",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DigFormProviderFactory",
+                    "optional": false,
+                    "description": "<p>The component the wraps a form row</p>\n",
+                    "line": 48,
+                    "rawdescription": "\n\nThe component the wraps a form row\n"
+                },
+                {
+                    "name": "select",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DigFormProviderFactory",
+                    "optional": false,
+                    "description": "<p>the component that renders a select control</p>\n",
+                    "line": 63,
+                    "rawdescription": "\n\nthe component that renders a select control\n"
+                },
+                {
+                    "name": "text",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DigFormProviderFactory",
+                    "optional": false,
+                    "description": "<p>The component that renders a text input or textarea (if rows or autosize are set)</p>\n",
+                    "line": 58,
+                    "rawdescription": "\n\nThe component that renders a text input or textarea (if rows or autosize are set)\n"
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "description": "<p>DigFormProviders build components to render the forms</p>\n",
+            "rawdescription": "\n\nDigFormProviders build components to render the forms\n",
+            "methods": []
+        },
+        {
+            "name": "GenericComponent",
+            "id": "interface-GenericComponent-f35a7c6d0ecfac94eb5f8f19d2daf196d7a6979befa40bbbc08f6dad031fb7e22f03353fcb8169c44392d458097774bd076613284189320428b0f0f49caa1fb2",
+            "file": "projects/core/src/lib/dig-form/dig-form.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import {ViewContainerRef} from '@angular/core';\n\nexport enum DigFormControlTypes {\n  checkbox = 'checkbox',\n  input = 'input',\n  textarea = 'textarea',\n  radioGroup = 'radioGroup',\n  radio = 'radio',\n  select = 'select',\n}\n\nexport interface DigFormControl {\n  render: () => any;\n}\n\nexport interface DigForm {\n  controls: DigFormControl[];\n}\n\ntype FormFactory = (config: any, viewContainer: ViewContainerRef) => GenericComponent;\n\n// todo figure out generic angular component type\ninterface GenericComponent {}\n\ntype DigFormProviderFactory = FormFactory | GenericComponent;\n/**\n * DigFormProviders build components to render the forms\n */\nexport interface DigFormProvider {\n  /**\n   * Module that exports all of the form components\n   */\n  module: any;\n\n  /**\n   * The component the wraps a form group\n   */\n  group: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row label\n   */\n  label: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row\n   */\n  row: DigFormProviderFactory;\n\n  /**\n   * The component the wraps a form row error\n   */\n  error: DigFormProviderFactory;\n\n  /**\n   * The component that renders a text input or textarea (if rows or autosize are set)\n   */\n  text: DigFormProviderFactory;\n\n  /**\n   * the component that renders a select control\n   */\n  select: DigFormProviderFactory;\n}\n\n",
+            "properties": [],
+            "indexSignatures": [],
+            "methods": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "CoreService",
+            "id": "injectable-CoreService-21d9dc0c3922ce03e3fe568273bb433aa5e1bae6e5bad113c29d58f012ad7e8897bfeb424c5a96a7852035482844e803c43bcf1727e5c7bd3f086fc374c56002",
+            "file": "projects/core/src/lib/core.service.ts",
+            "properties": [],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class CoreService {\n\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "DigFormService",
+            "id": "injectable-DigFormService-b0e959ac4243d088a038f9ca184c2f35583bb700ba22b49078e84bcc18b985e4fa72ab9a3ca3479e7f224af5804d1b84dbc8dbb49c53eb60eada39c53ea1087b",
+            "file": "projects/core/src/lib/dig-form/dig-form.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "controlFactory",
+                    "args": [
+                        {
+                            "name": "type",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "props",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "DigFormControl | undefined",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "type",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "props",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport {DigFormControl, DigFormProvider} from './dig-form';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class DigFormService{\n\n  constructor() { }\n\n  controlFactory(type: string, props: any): DigFormControl | undefined {\n    return undefined;\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 7
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "DigService",
+            "id": "injectable-DigService-20ef2e0ed7d976a16b15ab97748a312e3796b05d3cf65192363e8357e49d7dbfaf2d3b3497b674a8db0499ce4d2622e8e95b23d369efe651c1f74d8696e48e5a",
+            "file": "projects/core/src/lib/dig-service/dig.service.ts",
+            "properties": [
+                {
+                    "name": "active",
+                    "defaultValue": "new BehaviorSubject<string|null>(null)",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "BehaviorSubject<string | null>",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "active$",
+                    "defaultValue": "this.active.asObservable().pipe(\n    switchMap(active => this.registry.asObservable().pipe(\n      map(registry => active && registry ? registry[active] : null)\n    ))\n  )",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        123,
+                        144
+                    ]
+                },
+                {
+                    "name": "controls$",
+                    "defaultValue": "this.registry.asObservable()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        123,
+                        144
+                    ]
+                },
+                {
+                    "name": "registry",
+                    "defaultValue": "new BehaviorSubject<any>({})",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "BehaviorSubject<literal type>",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "dismiss",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "loadFromStorage",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "openForm",
+                    "args": [
+                        {
+                            "name": "uid",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "uid",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setControl",
+                    "args": [
+                        {
+                            "name": "uid",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "config",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "uid",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "config",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport {BehaviorSubject} from 'rxjs';\nimport {map, switchMap} from 'rxjs/operators';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class DigService {\n  private registry: BehaviorSubject<{[key: string]: any}> = new BehaviorSubject<any>({});\n  private active: BehaviorSubject<string|null> = new BehaviorSubject<string|null>(null);\n\n  // eslint-disable-next-line @typescript-eslint/member-ordering\n  public readonly controls$ = this.registry.asObservable();\n\n  // eslint-disable-next-line @typescript-eslint/member-ordering\n  public readonly active$ = this.active.asObservable().pipe(\n    switchMap(active => this.registry.asObservable().pipe(\n      map(registry => active && registry ? registry[active] : null)\n    ))\n  );\n\n  constructor() {\n    this.loadFromStorage();\n  }\n\n  openForm(uid: string) {\n    this.active.next(uid);\n  }\n\n  dismiss() {\n    this.active.next('');\n  }\n\n  setControl(uid: string, config: any) {\n    const controls = {...this.registry.getValue()};\n    controls[uid] = config;\n    this.registry.next(controls);\n  }\n\n  private loadFromStorage() {\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 20
+            },
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [
+        {
+            "name": "DigLocalData",
+            "id": "class-DigLocalData-043ad6d86eb4040b131b4160c6dec2f7c9f6696e49446bcc5bb8c2eae63ae65856ad80fa50b17cc02071352bf4ca44641f94c6369bfbb9b7066de3881bc78c8d",
+            "file": "projects/core/src/lib/dig-data/local/dig-local-data.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import {DigDataContainer, DigDataSource} from '../dig-data';\nimport {BehaviorSubject, combineLatest, map, Observable, of} from 'rxjs';\n\n/**\n * Connects Dig to localStorage\n */\nexport class DigLocalData implements DigDataSource{\n  private registry: DigDataContainer = {};\n  private prefix = `digcms`;\n\n  /**\n   * Fetches an Observable that watches the specified registry key\n   *\n   * @example\n   * ```typescript\n   * const aboutRef: Observable<AboutPage> = digLocalData.getData('about-page');\n   * aboutRef.subscribe(aboutData => ...do something with the about page data)\n   * ```\n   *\n   * todo pass an optional <type> reference\n   */\n  getData(key: string): Observable<any | undefined> {\n    const json = localStorage.getItem(this.getStorageKey(key));\n    const data: any = json ? JSON.parse(json) : null;\n    if (! this.keyExists(key)) {\n      this.createRegistryEntry(key, data);\n    } else {\n      this.registry[key].next(data);\n    }\n    return this.registry[key].asObservable();\n  }\n\n  /**\n   * Determines if a key exists in the registry\n   *\n   * @example\n   * ```typescript\n   * const hasHeadline: boolean = digLocalData.keyExists('headline')\n   * ```\n   */\n  keyExists(key: string): boolean {\n    return this.registry.hasOwnProperty(key);\n  }\n\n  /**\n   * Load the persisted data from local storage\n   * > Note that this does not happen automatically\n   *\n   * @example\n   * ```typescript\n   * digLocalData.load();\n   * ```\n   */\n  load(): void {\n    for (let i = 0; i < localStorage.length; i++) {\n      const key: string | null = localStorage.key(i);\n      if (! key || ! this.isDig(key)) {\n        return;\n      }\n      const json = localStorage.getItem(key);\n      const data = json ? JSON.parse(json) : null;\n      this.setData(this.getBaseKey(key), data);\n    }\n  }\n\n  /**\n   * Sets a registry node\n   *\n   * @example\n   * ```typescript\n   * digLocalData.setData('about-page', {\n   *   headline: 'About Us',\n   *   content: 'Our team is...'\n   * });\n   * ```\n   */\n  setData(key: string, data: any): void {\n    localStorage.setItem(this.getStorageKey(key), JSON.stringify(data));\n    if (! this.keyExists(key)) {\n      this.createRegistryEntry(key, data);\n    } else {\n      this.registry[key].next(data);\n    }\n  }\n\n  /**\n   * Fetches the entire state object\n   *\n   * @example\n   * ```typescript\n   * const state: Observable<AppState> = digLocalData.state()\n   * ```\n   *\n   * You can optionally pass this a filter function\n   *\n   * > Note that this can also be done with the RXJS `pipe()` but our filter function is\n   * > called prior to building the data object, so it is slightly more efficient\n   *\n   * @example\n   * ```typescript\n   * const teamMembers: Observable<TeamMember> = digLocalData.state((node) => node.pageType === 'team-member')\n   * ```\n   *\n   */\n  state(filterFn: (i: any) => boolean = (i: any) => true): Observable<any> {\n    const keys: string[] = Object.keys(this.registry);\n    return combineLatest(Object.values(this.registry)).pipe(\n      map((data: any[]) => {\n        let state: any;\n        return data\n          .map((value: any, i: number) => ({key: keys[i], value}))\n          .filter(node => filterFn(node.value))\n          .reduce((dataMap, node) => {\n            return {...dataMap, [node.key]: node.value}\n          }, state);\n      })\n    )\n  }\n\n  /**\n   * Completes the BehaviorSubject to notify any subscribers before removing it\n   * then deletes an the from the registry and local storage\n   *\n   * @example\n   * ```typescript\n   * digLocalData.delete('old-page')\n   * ```\n   */\n  delete(key: string) {\n    const subject = this.registry[key];\n    subject.complete();\n    delete this.registry[key];\n    localStorage.removeItem(this.getStorageKey(key));\n  }\n\n  /**\n   * Resets the entire state object and clears all dig entries from local storage\n   *\n   * @example\n   * ```typescript\n   * digLocalData.reset();\n   * ```\n   */\n  reset() {\n    // clear local storage\n    for (let i = 0; i < localStorage.length; i++) {\n      const key: string | null = localStorage.key(i);\n      if (! key || ! this.isDig(key)) {\n        return;\n      }\n      this.delete(this.getBaseKey(key));\n    }\n  }\n\n  /**\n   * get the dig storage key\n   */\n  getStorageKey(key: string): string {\n    return this.prefix + '-' + key;;\n  }\n\n  /**\n   * get the base key from a storage key\n   */\n  getBaseKey(storagekey: string): string {\n    return storagekey.replace(this.prefix + '-', '').trim();\n  }\n\n  /**\n   * determine if a key is a dig storage key\n   */\n  isDig(key: string): boolean {\n    return key.includes(this.prefix, 0);\n  }\n\n  /**\n   *\n   * internal function to register an entry\n   */\n  private createRegistryEntry(key: string, data: any): void {\n    if (this.keyExists(key)) {\n      throw new Error(`Unable to create registry entry \"${key}\". Key already exists.`);\n    }\n    this.registry[key] = new BehaviorSubject<any>(data);\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "prefix",
+                    "defaultValue": "`digcms`",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "registry",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DigDataContainer",
+                    "optional": false,
+                    "description": "",
+                    "line": 8,
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "description": "<p>Connects Dig to localStorage</p>\n",
+            "rawdescription": "\n\nConnects Dig to localStorage\n",
+            "methods": [
+                {
+                    "name": "createRegistryEntry",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "data",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 180,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\n\ninternal function to register an entry\n",
+                    "description": "<p>internal function to register an entry</p>\n",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "data",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "delete",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 129,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nCompletes the BehaviorSubject to notify any subscribers before removing it\nthen deletes an the from the registry and local storage\n\n```html\n```typescript\ndigLocalData.delete('old-page')\n```\n```",
+                    "description": "<p>Completes the BehaviorSubject to notify any subscribers before removing it\nthen deletes an the from the registry and local storage</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\ndigLocalData.delete(&#39;old-page&#39;)</code></pre></div><p>```</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "tagName": {
+                                "pos": 3461,
+                                "end": 3468,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">digLocalData.delete(&#39;old-page&#39;)\n</code></pre>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "getBaseKey",
+                    "args": [
+                        {
+                            "name": "storagekey",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 165,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nget the base key from a storage key\n",
+                    "description": "<p>get the base key from a storage key</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "storagekey",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getData",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any | undefined>",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFetches an Observable that watches the specified registry key\n\n```html\n```typescript\nconst aboutRef: Observable<AboutPage> = digLocalData.getData('about-page');\naboutRef.subscribe(aboutData => ...do something with the about page data)\n```\n```\ntodo pass an optional <type> reference\n",
+                    "description": "<p>Fetches an Observable that watches the specified registry key</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\nconst aboutRef: Observable&lt;AboutPage&gt; = digLocalData.getData(&#39;about-page&#39;);\naboutRef.subscribe(aboutData =&gt; ...do something with the about page data)</code></pre></div><div><pre class=\"line-numbers\"><code class=\"language-none\">todo pass an optional &lt;type&gt; reference</code></pre></div>",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "tagName": {
+                                "pos": 385,
+                                "end": 392,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">const aboutRef: Observable&lt;AboutPage&gt; = digLocalData.getData(&#39;about-page&#39;);\naboutRef.subscribe(aboutData =&gt; ...do something with the about page data)\n</code></pre>\n<p>todo pass an optional <type> reference</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "getStorageKey",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 158,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nget the dig storage key\n",
+                    "description": "<p>get the dig storage key</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isDig",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 172,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\ndetermine if a key is a dig storage key\n",
+                    "description": "<p>determine if a key is a dig storage key</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "keyExists",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 41,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nDetermines if a key exists in the registry\n\n```html\n```typescript\nconst hasHeadline: boolean = digLocalData.keyExists('headline')\n```\n```",
+                    "description": "<p>Determines if a key exists in the registry</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\nconst hasHeadline: boolean = digLocalData.keyExists(&#39;headline&#39;)</code></pre></div><p>```</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1056,
+                                "end": 1063,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">const hasHeadline: boolean = digLocalData.keyExists(&#39;headline&#39;)\n</code></pre>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "load",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nLoad the persisted data from local storage\n> Note that this does not happen automatically\n\n```html\n```typescript\ndigLocalData.load();\n```\n```",
+                    "description": "<p>Load the persisted data from local storage</p>\n<blockquote>\n<p>Note that this does not happen automatically</p>\n</blockquote>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\ndigLocalData.load();</code></pre></div><p>```</p>\n",
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 1371,
+                                "end": 1378,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">digLocalData.load();\n</code></pre>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "reset",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 144,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nResets the entire state object and clears all dig entries from local storage\n\n```html\n```typescript\ndigLocalData.reset();\n```\n```",
+                    "description": "<p>Resets the entire state object and clears all dig entries from local storage</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\ndigLocalData.reset();</code></pre></div><p>```</p>\n",
+                    "jsdoctags": [
+                        {
+                            "tagName": {
+                                "pos": 3817,
+                                "end": 3824,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">digLocalData.reset();\n</code></pre>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "setData",
+                    "args": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "data",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 77,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nSets a registry node\n\n```html\n```typescript\ndigLocalData.setData('about-page', {\n  headline: 'About Us',\n  content: 'Our team is...'\n});\n```\n```",
+                    "description": "<p>Sets a registry node</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\ndigLocalData.setData(&#39;about-page&#39;, {\n  headline: &#39;About Us&#39;,\n  content: &#39;Our team is...&#39;\n});</code></pre></div><p>```</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "key",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "data",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "tagName": {
+                                "pos": 1825,
+                                "end": 1832,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">digLocalData.setData(&#39;about-page&#39;, {\n  headline: &#39;About Us&#39;,\n  content: &#39;Our team is...&#39;\n});\n</code></pre>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "state",
+                    "args": [
+                        {
+                            "name": "filterFn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "i",
+                                    "type": "any",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "defaultValue": "(i: any) => true"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<any>",
+                    "typeParameters": [],
+                    "line": 105,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nFetches the entire state object\n\n```html\n```typescript\nconst state: Observable<AppState> = digLocalData.state()\n```\n```\nYou can optionally pass this a filter function\n\n> Note that this can also be done with the RXJS `pipe()` but our filter function is\n> called prior to building the data object, so it is slightly more efficient\n\n```html\n```typescript\nconst teamMembers: Observable<TeamMember> = digLocalData.state((node) => node.pageType === 'team-member')\n```\n```\n",
+                    "description": "<p>Fetches the entire state object</p>\n<div><pre class=\"line-numbers\"><code class=\"language-html\">```typescript\nconst state: Observable&lt;AppState&gt; = digLocalData.state()</code></pre></div><div><pre class=\"line-numbers\"><code class=\"language-none\">You can optionally pass this a filter function\n\n&gt; Note that this can also be done with the RXJS `pipe()` but our filter function is\n&gt; called prior to building the data object, so it is slightly more efficient\n\n```html\n```typescript\nconst teamMembers: Observable&lt;TeamMember&gt; = digLocalData.state((node) =&gt; node.pageType === &#39;team-member&#39;)</code></pre></div><div><pre class=\"line-numbers\"><code class=\"language-none\"></code></pre></div>",
+                    "jsdoctags": [
+                        {
+                            "name": "filterFn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "i",
+                                    "type": "any",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "defaultValue": "(i: any) => true",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "tagName": {
+                                "pos": 2286,
+                                "end": 2293,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">const state: Observable&lt;AppState&gt; = digLocalData.state()\n</code></pre>\n<p>You can optionally pass this a filter function</p>\n<blockquote>\n<p>Note that this can also be done with the RXJS <code>pipe()</code> but our filter function is\ncalled prior to building the data object, so it is slightly more efficient</p>\n</blockquote>\n"
+                        },
+                        {
+                            "tagName": {
+                                "pos": 2628,
+                                "end": 2635,
+                                "flags": 4227072,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "example"
+                            },
+                            "comment": "<pre><code class=\"language-typescript\">const teamMembers: Observable&lt;TeamMember&gt; = digLocalData.state((node) =&gt; node.pageType === &#39;team-member&#39;)\n</code></pre>\n"
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "DigDataSource"
+            ]
+        }
+    ],
+    "directives": [
+        {
+            "name": "DigDirective",
+            "id": "directive-DigDirective-b71df4dcca5a5c38978e54debda19a77d49dca1ca9f1864ee0264eef83a0a9d80b2f4c495d29b7e1e4c2cedddef814927fd76e21d692350b29432087e9b1369b",
+            "file": "projects/core/src/lib/dig-directive/dig.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import {\n  AfterContentInit,\n  AfterViewInit,\n  Directive,\n  HostBinding, HostListener,\n  Input,\n  OnInit,\n  ViewRef\n} from '@angular/core';\nimport {DigService} from '../dig-service/dig.service';\nimport {digComponent} from '../dig';\n\n@Directive({\n  // eslint-disable-next-line @angular-eslint/directive-selector\n  selector: '[dig]'\n})\nexport class DigDirective implements AfterViewInit{\n  // todo figure out the type here\n  @Input() dig!: any;\n  @Input() uid!: string;\n\n  constructor(private digService: DigService) {\n  }\n\n  // todo type this button\n  @HostListener('click', ['$event.target'])\n  onClick() {\n    this.handleClick();\n  }\n\n  ngAfterViewInit(): void {\n    this.digService.setControl(this.uid, digComponent(this.dig));\n  }\n\n  handleClick() {\n    this.digService.openForm(this.uid);\n  }\n\n}\n",
+            "selector": "[dig]",
+            "providers": [],
+            "inputsClass": [
+                {
+                    "name": "dig",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "any",
+                    "decorators": []
+                },
+                {
+                    "name": "uid",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "click",
+                    "args": [],
+                    "argsDecorator": [
+                        "$event.target"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'click', ['$event.target']"
+                        }
+                    ]
+                }
+            ],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "digService",
+                        "type": "DigService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 20,
+                "jsdoctags": [
+                    {
+                        "name": "digService",
+                        "type": "DigService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-aa08b3fcee2be55e38f25934c72062e25494b5fe793b025f09a2d6f69a3e579e2e56cb26fb8a182367629802dcd038f91fa76ee7b2ca200898c0fbe45ac06969",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'digcms'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'digcms';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<router-outlet></router-outlet>\n\n"
+        },
+        {
+            "name": "CoreComponent",
+            "id": "component-CoreComponent-f4d76e60fbb45cd5687a58fe6f6b5ed83e28c096d618f31e7b97604039178fe5abfbac8d29dda63ed47a22e029e4baa1eccce8a2de975712157559f8bc209de6",
+            "file": "projects/core/src/lib/core.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dig-core",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<p>\n  core works!\n</p>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'dig-core',\n  template: `\n    <p>\n      core works!\n    </p>\n  `,\n  styles: [\n  ]\n})\nexport class CoreComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 13
+            },
+            "implements": [
+                "OnInit"
+            ]
+        },
+        {
+            "name": "DigFormComponent",
+            "id": "component-DigFormComponent-b846c503d309874cf929936bb606c7284d795706df5b6add958b69f290bd450647e010c1514b641eee737b3f0af2eb948710bad9989126b7f531ee6fff00d81b",
+            "file": "projects/core/src/lib/dig-form/components/dig-form/dig-form.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-dig-form",
+            "styleUrls": [
+                "./dig-form.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./dig-form.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "controls",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "any[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "form",
+                    "defaultValue": "new FormGroup({})",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "registerControl",
+                    "args": [
+                        {
+                            "name": "ev",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "ev",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\nimport {FormGroup} from '@angular/forms';\n\n@Component({\n  selector: 'app-dig-form',\n  templateUrl: './dig-form.component.html',\n  styleUrls: ['./dig-form.component.scss'],\n})\nexport class DigFormComponent implements OnInit {\n  @Input() controls!: any[];\n\n  public form = new FormGroup({});\n\n  constructor() { }\n\n  ngOnInit() {\n    this.form.valueChanges.subscribe(console.log);\n  }\n\n  //TODO type this event\n  registerControl(ev: any) {\n    const {formControl, props} = ev;\n    this.form.addControl(props.input, formControl);\n    this.form.updateValueAndValidity();\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./dig-form.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 12
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"dig-form\" *ngIf=\"controls\">\n  <app-dig-form-control\n    *ngFor=\"let control of controls\"\n    [control]=\"control\"\n    (formRegistered)=\"registerControl($event)\"\n  ></app-dig-form-control>\n</div>\n"
+        },
+        {
+            "name": "FormErrorComponent",
+            "id": "component-FormErrorComponent-8134cff024ac54516baf4e638ba02c1c76f36b23905fe5a101c958ba931e66362e30d1f965a5fdbdffa886008a0dd6f1ed41ad8c46549b4438cee5882941e00d",
+            "file": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-error/form-error.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dig-form-error",
+            "styleUrls": [
+                "./form-error.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-error.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'dig-form-error',\n  templateUrl: './form-error.component.html',\n  styleUrls: ['./form-error.component.css']\n})\nexport class FormErrorComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./form-error.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>form-error works!</p>\n"
+        },
+        {
+            "name": "FormLabelComponent",
+            "id": "component-FormLabelComponent-7c0aa7f99c16a31f2c33e60adeb61801878f9d7a7eaadb347254dcfbb0cb8c15503754c45ee814ecf4c720e3083cb2962c74921c298a71ea68ca9834a788534d",
+            "file": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-label/form-label.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dig-form-label",
+            "styleUrls": [
+                "./form-label.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-label.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'dig-form-label',\n  templateUrl: './form-label.component.html',\n  styleUrls: ['./form-label.component.css']\n})\nexport class FormLabelComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./form-label.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>form-label works!</p>\n"
+        },
+        {
+            "name": "FormRowComponent",
+            "id": "component-FormRowComponent-e17201e5c04381b392987e3f26ccac511706a7644e03eaf783a84ef3331281735fa6e907c4a7ecd07261d4609cff953b5c0ee7fbd5a449d04e1aab966786067b",
+            "file": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-row/form-row.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dig-form-row",
+            "styleUrls": [
+                "./form-row.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-row.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'dig-form-row',\n  templateUrl: './form-row.component.html',\n  styleUrls: ['./form-row.component.css']\n})\nexport class FormRowComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./form-row.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>form-row works!</p>\n"
+        },
+        {
+            "name": "FormSectionComponent",
+            "id": "component-FormSectionComponent-39bfa721cb619e203c514af52c2b593204cab2a7fee25bb6a7880fd91654d2c360a7012d042bad6ddd69f05d5fbe9e942fc1e5eff78b1ba5d4f292e1dab99c05",
+            "file": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-section/form-section.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dig-form-section",
+            "styleUrls": [
+                "./form-section.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-section.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'dig-form-section',\n  templateUrl: './form-section.component.html',\n  styleUrls: ['./form-section.component.css']\n})\nexport class FormSectionComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./form-section.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>form-section works!</p>\n"
+        },
+        {
+            "name": "FormSelectComponent",
+            "id": "component-FormSelectComponent-be8ada3173f292458cbd6dbdd56241319eab640616625ef9f5bb82ffb25c2d085ee5f57fdbd7a3bab85b7ac51f91c9c534c662f83c63f63f2d4777dca425ef4b",
+            "file": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-select/form-select.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dig-form-select",
+            "styleUrls": [
+                "./form-select.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-select.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'dig-form-select',\n  templateUrl: './form-select.component.html',\n  styleUrls: ['./form-select.component.css']\n})\nexport class FormSelectComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./form-select.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>form-select works!</p>\n"
+        },
+        {
+            "name": "FormTextComponent",
+            "id": "component-FormTextComponent-55d7bc2ef7eea7d2ce892cd1054bbe48169f0f0d6ccf6ac4ad7ca17a8be32c644a7d9ae573bc2aa6c9194db4b96e8c03cd387307b601a3a76e04f3015738f25e",
+            "file": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-text/form-text.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dig-form-text",
+            "styleUrls": [
+                "./form-text.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./form-text.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "formControl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "FormControl",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "rows",
+                    "defaultValue": "1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "any",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "blur",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "EventEmitter<any>"
+                },
+                {
+                    "name": "changed",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "EventEmitter<any>"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';\nimport {FormControl} from '@angular/forms';\n\n@Component({\n  selector: 'dig-form-text',\n  templateUrl: './form-text.component.html',\n  styleUrls: ['./form-text.component.scss']\n})\nexport class FormTextComponent implements OnInit {\n  @Input() placeholder = '';\n  @Input() value = null;\n  @Input() formControl!: FormControl;\n  @Input() rows = 1;\n  @Output() changed: EventEmitter<any> = new EventEmitter<any>();\n  @Output() blur: EventEmitter<any> = new EventEmitter<any>();\n\n  constructor() { }\n\n  get isTextArea() {\n    return this.rows > 1;\n  }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../assets/dig-form.scss\";\n",
+                    "styleUrl": "./form-text.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 15
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "accessors": {
+                "isTextArea": {
+                    "name": "isTextArea",
+                    "getSignature": {
+                        "name": "isTextArea",
+                        "type": "",
+                        "returnType": "",
+                        "line": 19
+                    }
+                }
+            },
+            "templateData": "<ng-template #input>\n  <input class=\"dig-form-control\" [placeholder]=\"placeholder\" (change)=\"changed.emit($event.target.value)\">\n</ng-template>\n\n<ng-template #textarea>\n  <textarea class=\"dig-form-control\" [rows]=\"rows\" [placeholder]=\"placeholder\" (change)=\"changed.emit($event.target.value)\"></textarea>\n</ng-template>\n\n<div class=\"dig-form-text dig-form-text-{{isTextArea ? 'textarea' : 'input'}}\">\n  <ng-container *ngTemplateOutlet=\"isTextArea ? textarea : input\"></ng-container>\n</div>\n"
+        },
+        {
+            "name": "HomePageComponent",
+            "id": "component-HomePageComponent-7ad1bb49de354bccfcfe911269fba1435b30b34ea953035c1b069febaf8e0d5ae5b3723053a515a5e345160cadb3ed97e88f01578bd2d04f153dfac09cfa65a3",
+            "file": "src/app/pages/home/home-page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-home-page",
+            "styleUrls": [
+                "./home-page.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./home-page.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-home-page',\n  templateUrl: './home-page.component.html',\n  styleUrls: ['./home-page.component.scss']\n})\nexport class HomePageComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".hero{\n  padding: 5rem 2.5rem;\n  background: #222224;\n  color: #fff;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  position: relative;\n  .open-source{\n    position: absolute;\n    top: 0;\n    right: 0;\n    background: #fff;\n    img{\n      width: 80px;\n      height: auto;\n      svg{\n        fill: #fff;\n      }\n    }\n  }\n  .headline{\n    display: flex;\n    align-items: center;\n    margin-bottom: 2.5rem;\n    justify-content: center;\n    img{\n      height: 100px;\n      width: auto;\n      margin-right: 1rem;\n    }\n    h1{\n      margin:0;\n      font-size: 64px;\n      font-weight: 900;\n    }\n  }\n\n  p{\n    margin: 0;\n    font-size: 1.5rem;\n  }\n}\n\n\n\n\n",
+                    "styleUrl": "./home-page.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"hero\">\n  <div class=\"open-source\">\n    <img src=\"assets/images/osi-logo.png\" alt=\"open source logo\">\n  </div>\n  <div class=\"brand\">\n    <div class=\"headline\">\n      <img src=\"assets/images/logo.png\">\n      <h1>DigCms</h1>\n    </div>\n    <p>DigCms turns your Angular project into a CMS with 5 lines of code!</p>\n  </div>\n</div>\n\n<section>\n  <aside class=\"quickstart\">\n    <markdown src=\"assets/wiki/quickstart.md\"></markdown>\n  </aside>\n  <main>\n\n  </main>\n</section>\n\n\n"
+        },
+        {
+            "name": "ParagraphComponent",
+            "id": "component-ParagraphComponent-c14054a85f8b5124e4f849a2ef1958709d00126205615ed68cd391d7ba5c90eb81a9518b12d57da71a7d119ec383548627d92c0eaf42147381c1c23d14111f78",
+            "file": "src/app/sandbox/page-with-form/plugins/paragraph/paragraph.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-paragraph",
+            "styleUrls": [
+                "./paragraph.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./paragraph.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-paragraph',\n  templateUrl: './paragraph.component.html',\n  styleUrls: ['./paragraph.component.scss']\n})\nexport class ParagraphComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./paragraph.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>paragraph works!</p>\n"
+        },
+        {
+            "name": "PluginComponent",
+            "id": "component-PluginComponent-b816c2532553205b31cfecce5517203719c1d5cf89cbbcc5111ff383b4883287700775c387df3d0f43ab3c2f5bcaeec91c9a28f249ed5aaaeb9799f1699b833a",
+            "file": "src/app/sandbox/page-with-form/plugin/plugin.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-plugin",
+            "styleUrls": [
+                "./plugin.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./plugin.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-plugin',\n  templateUrl: './plugin.component.html',\n  styleUrls: ['./plugin.component.scss']\n})\nexport class PluginComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./plugin.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>plugin works!</p>\n"
+        },
+        {
+            "name": "TextComponent",
+            "id": "component-TextComponent-4834010d23deeb2b9027c3a095535d917286bc9db1fd512498ec4f95f4b743f922956006d529a8fd312e342fcd883013d4e01f3f3be85a15a08eb85a32e6c099",
+            "file": "projects/core/src/plugins/text/text.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "dig-text",
+            "styleUrls": [
+                "./text.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./text.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'dig-text',\n  templateUrl: './text.component.html',\n  styleUrls: ['./text.component.scss']\n})\nexport class TextComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./text.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>text works!</p>\n"
+        },
+        {
+            "name": "TextComponent",
+            "id": "component-TextComponent-60af4a4c6b9e392ddcdf8b2bf1deabc6bbc5c8a8f01f1fe398f976b00440b1ac8f807fcc3dbe537f0df2babeb38b99106bb4446f534e9d9f587b300eed148ad4-1",
+            "file": "projects/core/src/test/components/text.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "text-component",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<p>Test</p>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "description",
+                    "defaultValue": "'test this'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": [
+                        {
+                            "name": "Dig",
+                            "stringifiedArguments": "{type: 'text', rows: 2, placeholder: 'Enter a description'}"
+                        }
+                    ]
+                },
+                {
+                    "name": "format",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "text",
+                    "defaultValue": "'test this'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": [
+                        {
+                            "name": "Dig",
+                            "stringifiedArguments": "{type: 'text', placeholder: 'Enter some text'}"
+                        }
+                    ]
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\nimport {Dig} from '../../lib/dig/dig';\n\nexport const textConfig = {\n  control: 'input',\n  type: 'text',\n  placeholder: 'Enter some text'\n};\n\n@Component({\n  selector: 'text-component',\n  template: '<p>Test</p>'\n})\nexport class TextComponent implements OnInit {\n  @Dig({\n    type: 'text',\n    placeholder: 'Enter some text'\n  })\n  @Input() text = 'test this';\n  @Dig({\n    type: 'text',\n    rows: 2,\n    placeholder: 'Enter a description'\n  })\n  @Input() description = 'test this';\n  @Input() format!: string;\n\n  ngOnInit() {\n    // console.log(getControl(this, 'text'));\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "implements": [
+                "OnInit"
+            ],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "TextComponent-1"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "id": "module-AppModule-68e94e51ef7475f5a5ed74c68e66a531b10b8a9a45e26b3798e209de198f92a8b5c6dced7b6db04dc0f3a78a28a28c3af641f10f290c8253331b9abef7113145",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\nimport {HttpClient, HttpClientModule} from '@angular/common/http';\nimport {MarkdownModule} from 'ngx-markdown';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    BrowserAnimationsModule,\n    HttpClientModule,\n    MarkdownModule.forRoot({ loader: HttpClient }),\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "id": "module-AppRoutingModule-6f4535f7dc7caae8a92f976c4df9026e76a87109cfa2cbe1d1b9a639cd1a914e6390f14d9fdd0070164d06f611e1fc1b56e03e019ac0df307b95e04cef6b4b90",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [\n  {\n    path: '',\n    pathMatch: 'full',\n    redirectTo: 'home'\n  },\n  {\n    path: 'home',\n    loadChildren: () => \"import('./pages/home/home.module').then(m => m.HomeModule)\"\n  }\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "CoreModule",
+            "id": "module-CoreModule-585188580673b2ef713ddd145c8d59437404419365d7a1255e1369c3dfd286506a2dde9c04ad3f0d2f7cf975413d2ef1778880132bdc130f3481d36251391ca5",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/core/src/lib/core.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CoreComponent } from './core.component';\nimport {DigFormModule} from './dig-form/dig-form.module';\n\n\n\n@NgModule({\n  declarations: [\n    CoreComponent,\n  ],\n  imports: [\n    DigFormModule,\n\n  ],\n  exports: [\n    CoreComponent\n  ]\n})\nexport class CoreModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "CoreComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "DigFormModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "CoreComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DigCmsModule",
+            "id": "module-DigCmsModule-729fa99089922e4b1ddb2513a9d3eede49232253e2f7e3b90e8b722750ff8d07bfcc791de03c302d66d04b3b685694b2574652b7ca70240cd11db9d9f4e44dcf",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/core/src/lib/dig-cms.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\n\n\n\n@NgModule({\n  declarations: [\n  ],\n  imports: [\n  ],\n  exports: [\n  ]\n})\nexport class DigCmsModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DigFormModule",
+            "id": "module-DigFormModule-4a3d9aa6e1639d507a61942bff61c8bdab97e48c9b80469b9e5dd8d22856edad89505d090ce2fdbd0856219e6aa39b6276c7b9949f6200a3bcc247c52c0d9586",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/core/src/lib/dig-form/dig-form.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport {DigFormComponent} from './components/dig-form/dig-form.component';\n\n\n\n@NgModule({\n  declarations: [\n    DigFormComponent\n  ],\n  exports: [\n    DigFormComponent\n  ],\n  imports: [\n    CommonModule\n  ]\n})\nexport class DigFormModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "DigFormComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "DigFormComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DigFormProviderModule",
+            "id": "module-DigFormProviderModule-91b4a10ab43ad4c6b1b4aac9f84ec7dad7a489f34f112b8089448bae9e53ce899d87b95e7f323e540ccf9411b83cb8e441059a5d9447c42acdb3656aa4f38602",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/dig-form-provider.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormSectionComponent } from './form-section/form-section.component';\nimport { FormRowComponent } from './form-row/form-row.component';\nimport { FormErrorComponent } from './form-error/form-error.component';\nimport { FormLabelComponent } from './form-label/form-label.component';\nimport { FormTextComponent } from './form-text/form-text.component';\nimport { FormSelectComponent } from './form-select/form-select.component';\n\n\n\n@NgModule({\n  declarations: [\n    FormSectionComponent,\n    FormRowComponent,\n    FormErrorComponent,\n    FormLabelComponent,\n    FormTextComponent,\n    FormSelectComponent\n  ],\n  imports: [\n    CommonModule\n  ]\n})\nexport class DigFormProviderModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "FormErrorComponent"
+                        },
+                        {
+                            "name": "FormLabelComponent"
+                        },
+                        {
+                            "name": "FormRowComponent"
+                        },
+                        {
+                            "name": "FormSectionComponent"
+                        },
+                        {
+                            "name": "FormSelectComponent"
+                        },
+                        {
+                            "name": "FormTextComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "HomeModule",
+            "id": "module-HomeModule-9b22f437627be36f533c7e37598d595281dbefe06793555f8edd0f1ad0395d38e93d7edeb42f1aa5650ebf6590a72a15043029cb590c8a9cc788c1ca89018281",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/pages/home/home.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HomeRoutingModule } from './home-routing.module';\nimport {MarkdownModule} from 'ngx-markdown';\nimport {HomePageComponent} from './home-page.component';\n\n\n@NgModule({\n  declarations: [\n    HomePageComponent\n  ],\n  imports: [\n    CommonModule,\n    HomeRoutingModule,\n    MarkdownModule\n  ]\n})\nexport class HomeModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "HomePageComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "HomeRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "HomeRoutingModule",
+            "id": "module-HomeRoutingModule-68e6fd4274bc30ef66a831a312bf535ce55a160a0fd84bd853b2a74a9a15a0d9728e2bef0d24173091c3331160888eef17d7e62ef4d8b17f65f543cecfd9f2c9",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/pages/home/home-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport {HomePageComponent} from './home-page.component';\n\nconst routes: Routes = [\n  {\n    path: '',\n    component: HomePageComponent\n  }\n];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule]\n})\nexport class HomeRoutingModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "PageWithFormModule",
+            "id": "module-PageWithFormModule-0aee1baed5917b328dfc31eb50852c692abdb80cdd1d343f0da3724c63318983dc10d2f57ddb50feefd45e7b4b4a0217f796b7d34a8a7634ce3398f3f9808226",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/sandbox/page-with-form/page-with-form.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { PluginComponent } from './plugin/plugin.component';\nimport { ParagraphComponent } from './plugins/paragraph/paragraph.component';\n\n\n\n@NgModule({\n  declarations: [\n    PluginComponent,\n    ParagraphComponent\n  ],\n  imports: [\n    CommonModule\n  ]\n})\nexport class PageWithFormModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ParagraphComponent"
+                        },
+                        {
+                            "name": "PluginComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "TextModule",
+            "id": "module-TextModule-372f59eb1b39be5f6920c9194943d23ec9b936758f443504b52f3d8ac794b588b5e998dc2b99add4d44076a4edfb9a1967440183ff1073d85fc19d6295e84d9f",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/core/src/plugins/text/text.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { TextComponent } from './text.component';\n\n\n\n@NgModule({\n  declarations: [\n    TextComponent\n  ],\n  imports: [\n    CommonModule\n  ]\n})\nexport class TextModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "TextComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "Dig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/lib/dig/dig.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(config: any) => Reflect.metadata(formatMetadataKey, config)"
+            },
+            {
+                "name": "digComponent",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/lib/dig/dig.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(target: any) => {\n  if (target?.constructor.hasOwnProperty('propDecorators')) {\n    return Object.keys(target.constructor.propDecorators)?.map(input => ({\n      input,\n      digProps: Reflect.getMetadata(formatMetadataKey, target, input)\n    })).filter(input => !! input?.digProps);\n  } else {\n    return null;\n  }\n}"
+            },
+            {
+                "name": "DigHtmlFormProvider",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/index.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "DigFormProvider",
+                "defaultValue": "{\n  module: DigFormProviderModule,\n  group: (config: any, viewContainer: ViewContainerRef) => FormSectionComponent,\n  row: (config: any, viewContainer: ViewContainerRef) => FormRowComponent,\n  error: (config: any, viewContainer: ViewContainerRef) => FormErrorComponent,\n  label: (config: any, viewContainer: ViewContainerRef) => FormLabelComponent,\n  text: (config: any, viewContainer: ViewContainerRef) => FormTextComponent,\n  select: (config: any, viewContainer: ViewContainerRef) => FormSelectComponent\n}"
+            },
+            {
+                "name": "digInput",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/lib/dig/dig.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(target: any, propertyKey: string) => Reflect.getMetadata(formatMetadataKey, target, propertyKey)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: false,\n  firebase: {\n    apiKey: \"AIzaSyCsXhq40XSFcsP9Pmz_LBFW_NT5ydhfVhw\",\n    authDomain: \"dig-cms-64717.firebaseapp.com\",\n    projectId: \"dig-cms-64717\",\n    storageBucket: \"dig-cms-64717.appspot.com\",\n    messagingSenderId: \"986528470206\",\n    appId: \"1:986528470206:web:f7c842585e39c94088baef\",\n    measurementId: \"G-R3W54H68G2\"\n  }\n}"
+            },
+            {
+                "name": "formatMetadataKey",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/lib/dig/dig.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Symbol('Dig')"
+            },
+            {
+                "name": "input",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/core/form/provider/Text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "render",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/core/form/Form.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "render",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/core/plugins/text/Text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/core/form/Form.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<DigFormComponent>",
+                "defaultValue": "(args: DigFormComponent) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/core/form/provider/Text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<FormTextComponent>",
+                "defaultValue": "(args: FormTextComponent) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/core/plugins/text/Text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TextComponent>",
+                "defaultValue": "(args: TextComponent) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "textArea",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/core/form/provider/Text.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "textConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/core/src/test/components/text.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  control: 'input',\n  type: 'text',\n  placeholder: 'Enter some text'\n}"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "DigDataContainer",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "projects/core/src/lib/dig-data/dig-data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 181
+            },
+            {
+                "name": "DigFormProviderFactory",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "FormFactory | GenericComponent",
+                "file": "projects/core/src/lib/dig-form/dig-form.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
+            {
+                "name": "FormFactory",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "function",
+                "file": "projects/core/src/lib/dig-form/dig-form.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 178
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "DigFormControlTypes",
+                "childs": [
+                    {
+                        "name": "checkbox",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "checkbox"
+                    },
+                    {
+                        "name": "input",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "input"
+                    },
+                    {
+                        "name": "textarea",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "textarea"
+                    },
+                    {
+                        "name": "radioGroup",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "radioGroup"
+                    },
+                    {
+                        "name": "radio",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "radio"
+                    },
+                    {
+                        "name": "select",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "select"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "projects/core/src/lib/dig-form/dig-form.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "projects/core/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "projects/core/src/lib/dig/dig.ts": [
+                {
+                    "name": "Dig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/lib/dig/dig.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(config: any) => Reflect.metadata(formatMetadataKey, config)"
+                },
+                {
+                    "name": "digComponent",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/lib/dig/dig.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(target: any) => {\n  if (target?.constructor.hasOwnProperty('propDecorators')) {\n    return Object.keys(target.constructor.propDecorators)?.map(input => ({\n      input,\n      digProps: Reflect.getMetadata(formatMetadataKey, target, input)\n    })).filter(input => !! input?.digProps);\n  } else {\n    return null;\n  }\n}"
+                },
+                {
+                    "name": "digInput",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/lib/dig/dig.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(target: any, propertyKey: string) => Reflect.getMetadata(formatMetadataKey, target, propertyKey)"
+                },
+                {
+                    "name": "formatMetadataKey",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/lib/dig/dig.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Symbol('Dig')"
+                }
+            ],
+            "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/index.ts": [
+                {
+                    "name": "DigHtmlFormProvider",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/index.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DigFormProvider",
+                    "defaultValue": "{\n  module: DigFormProviderModule,\n  group: (config: any, viewContainer: ViewContainerRef) => FormSectionComponent,\n  row: (config: any, viewContainer: ViewContainerRef) => FormRowComponent,\n  error: (config: any, viewContainer: ViewContainerRef) => FormErrorComponent,\n  label: (config: any, viewContainer: ViewContainerRef) => FormLabelComponent,\n  text: (config: any, viewContainer: ViewContainerRef) => FormTextComponent,\n  select: (config: any, viewContainer: ViewContainerRef) => FormSelectComponent\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n  firebase: {\n    apiKey: \"AIzaSyCsXhq40XSFcsP9Pmz_LBFW_NT5ydhfVhw\",\n    authDomain: \"dig-cms-64717.firebaseapp.com\",\n    projectId: \"dig-cms-64717\",\n    storageBucket: \"dig-cms-64717.appspot.com\",\n    messagingSenderId: \"986528470206\",\n    appId: \"1:986528470206:web:f7c842585e39c94088baef\",\n    measurementId: \"G-R3W54H68G2\"\n  }\n}"
+                }
+            ],
+            "src/stories/core/form/provider/Text.stories.ts": [
+                {
+                    "name": "input",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/core/form/provider/Text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/core/form/provider/Text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<FormTextComponent>",
+                    "defaultValue": "(args: FormTextComponent) => ({\n  props: args,\n})"
+                },
+                {
+                    "name": "textArea",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/core/form/provider/Text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            "src/stories/core/form/Form.stories.ts": [
+                {
+                    "name": "render",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/core/form/Form.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/core/form/Form.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<DigFormComponent>",
+                    "defaultValue": "(args: DigFormComponent) => ({\n  props: args,\n})"
+                }
+            ],
+            "src/stories/core/plugins/text/Text.stories.ts": [
+                {
+                    "name": "render",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/core/plugins/text/Text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/core/plugins/text/Text.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TextComponent>",
+                    "defaultValue": "(args: TextComponent) => ({\n  props: args,\n})"
+                }
+            ],
+            "projects/core/src/test/components/text.component.ts": [
+                {
+                    "name": "textConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/core/src/test/components/text.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  control: 'input',\n  type: 'text',\n  placeholder: 'Enter some text'\n}"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {
+            "projects/core/src/lib/dig-form/dig-form.ts": [
+                {
+                    "name": "DigFormControlTypes",
+                    "childs": [
+                        {
+                            "name": "checkbox",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "checkbox"
+                        },
+                        {
+                            "name": "input",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "input"
+                        },
+                        {
+                            "name": "textarea",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "textarea"
+                        },
+                        {
+                            "name": "radioGroup",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "radioGroup"
+                        },
+                        {
+                            "name": "radio",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "radio"
+                        },
+                        {
+                            "name": "select",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "select"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "projects/core/src/lib/dig-form/dig-form.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "projects/core/src/lib/dig-data/dig-data.ts": [
+                {
+                    "name": "DigDataContainer",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "projects/core/src/lib/dig-data/dig-data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 181
+                }
+            ],
+            "projects/core/src/lib/dig-form/dig-form.ts": [
+                {
+                    "name": "DigFormProviderFactory",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "FormFactory | GenericComponent",
+                    "file": "projects/core/src/lib/dig-form/dig-form.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                },
+                {
+                    "name": "FormFactory",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "function",
+                    "file": "projects/core/src/lib/dig-form/dig-form.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 178
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [
+                    {
+                        "path": "",
+                        "pathMatch": "full",
+                        "redirectTo": "home"
+                    },
+                    {
+                        "path": "home",
+                        "loadChildren": "./pages/home/home.module#HomeModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/pages/home/home-routing.module.ts",
+                                        "module": "HomeRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "component": "HomePageComponent"
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "HomeModule"
+                            }
+                        ]
+                    }
+                ],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 6,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/core/src/lib/core.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CoreComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/core.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "CoreService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-data/dig-data.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DigDataSource",
+                "coveragePercent": 80,
+                "coverageCount": "4/5",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-data/local/dig-local-data.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "DigLocalData",
+                "coveragePercent": 85,
+                "coverageCount": "12/14",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-directive/dig.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "DigDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/components/dig-form/dig-form.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DigFormComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/dig-form.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "DigFormService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/dig-form.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DigForm",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/dig-form.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DigFormControl",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/dig-form.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DigFormProvider",
+                "coveragePercent": 100,
+                "coverageCount": "8/8",
+                "status": "very-good"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/dig-form.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "GenericComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-error/form-error.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormErrorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-label/form-label.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormLabelComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-row/form-row.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormRowComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-section/form-section.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormSectionComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-select/form-select.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormSelectComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/form-text/form-text.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FormTextComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-form/providers/dig/dig-form-provider/index.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DigHtmlFormProvider",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig-service/dig.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "DigService",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig/dig.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Dig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig/dig.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "digComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig/dig.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "digInput",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/lib/dig/dig.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "formatMetadataKey",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/plugins/text/text.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TextComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/test/components/text.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TextComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/core/src/test/components/text.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "textConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/pages/home/home-page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomePageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sandbox/page-with-form/plugin/plugin.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PluginComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/sandbox/page-with-form/plugins/paragraph/paragraph.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ParagraphComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/core/form/Form.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "render",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/core/form/Form.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/core/form/provider/Text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "input",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/core/form/provider/Text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/core/form/provider/Text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "textArea",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/core/plugins/text/Text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "render",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/core/plugins/text/Text.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}
