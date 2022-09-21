@@ -10,7 +10,8 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
-  }
+  },
+  { path: 'sandbox', loadChildren: () => import('./pages/sandbox/sandbox.module').then(m => m.SandboxModule) }
 ];
 
 @NgModule({

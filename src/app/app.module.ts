@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {MarkdownModule} from 'ngx-markdown';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {MarkdownModule} from 'ngx-markdown';
     BrowserAnimationsModule,
     HttpClientModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
