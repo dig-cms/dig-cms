@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dig-dig-plugin-template',
+  selector: 'dig-plugin-template',
   templateUrl: './dig-plugin-template.component.html',
   styleUrls: ['./dig-plugin-template.component.scss']
 })

@@ -1,7 +1,0 @@
-<div class="dig-form" *ngIf="controls">
-  <app-dig-form-control
-    *ngFor="let control of controls"
-    [control]="control"
-    (formRegistered)="registerControl($event)"
-  ></app-dig-form-control>
-</div>

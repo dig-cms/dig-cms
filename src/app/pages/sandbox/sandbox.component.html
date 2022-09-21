@@ -1,8 +1,26 @@
-<app-dig-plugin [formGroup]="form" scope="global" path="sandbox-test">
-  <app-dig-plugin-form>
-    <input formControlName="text" placeholder="text">
-  </app-dig-plugin-form>
-  <app-dig-plugin-template *digPluginData="let data">
-    <h1>HI {{data.text}}!</h1>
-  </app-dig-plugin-template>
-</app-dig-plugin>
+<dig-plugin *digPlugin="'global:greeting'; form: form; let data">
+  <dig-plugin-form [formGroup]="form" >
+    <input formControlName="name" placeholder="text">
+  </dig-plugin-form>
+  <dig-plugin-template>
+    <h1>HI {{data.name}}!</h1>
+  </dig-plugin-template>
+</dig-plugin>
+
+<dig-plugin *digPlugin="'global:greeting'; let data">
+  <dig-plugin-form [formGroup]="form" >
+    <input formControlName="name" placeholder="text">
+  </dig-plugin-form>
+  <dig-plugin-template>
+    <h1>HI {{data.name}}!</h1>
+  </dig-plugin-template>
+</dig-plugin>
+
+<dig-plugin *digPlugin="'global:greeting_static'; data: {name: 'bart'};let data">
+  <dig-plugin-form [formGroup]="form" >
+    <input formControlName="name" placeholder="text">
+  </dig-plugin-form>
+  <dig-plugin-template>
+    <h1>HI {{data.name}}!</h1>
+  </dig-plugin-template>
+</dig-plugin>

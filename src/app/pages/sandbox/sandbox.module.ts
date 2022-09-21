@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { SandboxRoutingModule } from './sandbox-routing.module';
 import { SandboxComponent } from './sandbox.component';
-import {DigPluginModule} from "./dig-plugin/dig-plugin.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {DigModule} from 'core';
 
 
 @NgModule({
@@ -13,10 +13,9 @@ import {ReactiveFormsModule} from "@angular/forms";
   ],
   imports: [
     CommonModule,
-    DigPluginModule,
     ReactiveFormsModule,
     SandboxRoutingModule,
-    DigPluginModule
+    DigModule
   ]
 })
 export class SandboxModule { }

@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class SandboxComponent implements OnInit {
   public readonly form = new FormGroup({
-    text: new FormControl('sample text')
+    name: new FormControl('Forrest')
   });
 
   constructor(private router: Router) { }
